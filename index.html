@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>李诗蕴 3ds Max 作品集</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        background-color: #fff3e9;
+        font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+        color: #222;
+    }
+    .cover {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .title-wrap{
+        text-align:center;
+    }
+    .line1 {
+        font-size: 32px;
+        color: #2388dd;
+        margin-bottom: 10px;
+    }
+    .line2 {
+        font-size: 36px;
+        color: #2388dd;
+        margin-bottom: 10px;
+    }
+    .line3 {
+        font-size: 40px;
+        color: #2388dd;
+        margin-bottom: 10px;
+    }
+    .line4 {
+        font-size: 26px;
+        color: #2388dd;
+        margin-bottom: 14px;
+    }
+    .english-sub{
+        font-size: 20px;
+        color: #2388dd;
+        opacity: 0.85;
+        letter-spacing: 2px;
+        margin-bottom: 45px;
+    }
+    .enter-btn {
+        padding:16px 52px;
+        font-size:18px;
+        border:none;
+        border-radius:999px;
+        background-color:#ff7823;
+        color:white;
+        cursor:pointer;
+        transition:0.25s;
+        font-weight:bold;
+    }
+    .enter-btn:hover {
+        background-color:#ff8c42;
+    }
+    .work-section {
+        display:none;
+        padding:60px 20px;
+    }
+    .tab-group {
+        display:flex;
+        gap:16px;
+        justify-content:center;
+        margin-bottom:40px;
+    }
+    .tab {
+        padding:10px 26px;
+        border-radius:30px;
+        border:2px solid #ff7823;
+        color:#ff7823;
+        cursor:pointer;
+        font-weight:bold;
+        transition:0.25s;
+    }
+    .tab.active {
+        background:#ff7823;
+        color:white;
+    }
+    .work-card {
+        max-width:1000px;
+        margin:35px auto;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:28px;
+        background:#ffffff;
+        padding:26px;
+        border-radius:16px;
+    }
+    model-viewer {
+        width:100%;
+        height:420px;
+        background:#fff8f2;
+        border-radius:12px;
+    }
+    .desc h3 {
+        color:#2388dd;
+        margin-bottom:14px;
+        font-size:24px;
+    }
+    .desc p {
+        color:#444;
+        line-height:1.8;
+        font-size:15px;
+    }
+    @media (max-width:768px) {
+        .line1 {font-size: 22px;}
+        .line2 {font-size: 24px;}
+        .line3 {font-size: 28px;}
+        .line4 {font-size: 20px;}
+        .english-sub{font-size:16px;}
+        .work-card {
+            grid-template-columns:1fr;
+        }
+        model-viewer {
+            height:300px;
+        }
+    }
+</style>
+</head>
+<body>
+<section class="cover" id="cover">
+    <div class="title-wrap">
+        <div class="line1">欢迎来到</div>
+        <div class="line2">韶关学院 · 25数字媒体技术01班</div>
+        <div class="line3">李诗蕴</div>
+        <div class="line4">3ds Max 作品集</div>
+        <div class="english-sub">Welcome to My 3ds Max Portfolio</div>
+        <button class="enter-btn" id="enterBtn">进入了解</button>
+    </div>
+</section>
+<section class="work-section" id="workArea">
+    <div class="tab-group">
+        <div class="tab active" data-tab="work1">第一次作业</div>
+        <div class="tab" data-tab="work2">第二次作业</div>
+    </div>
+    <div class="work-item" id="work1">
+        <div class="work-card">
+            <model-viewer
+                src="sofa.glb"
+                alt="第一次作业模型"
+                auto-rotate
+                camera-controls>
+            </model-viewer>
+            <div class="desc">
+                <h3>第一次作业</h3>
+                <p>第一次作业是个性沙发，采用切角长方体作为基本单元，通过重复堆叠和拼接形成偏方正的体块造型。它看起来不算张扬，但我想表达一种“克制型个性”：像我的性格一样，直接、方正、有棱角，但切角让整体不至于太生硬。整体难度不大，主要难点是物块之间的堆叠对齐、避免穿模，以及枕头旋转摆放时的穿插关系处理。</p >
+            </div>
+        </div>
+    </div>
+    <div class="work-item" id="work2" style="display:none;">
+        <div class="work-card">
+            <model-viewer
+                src="backcase.glb"
+                alt="第二次作业模型"
+                auto-rotate
+                camera-controls>
+            </model-viewer>
+            <div class="desc">
+                <h3>第二次作业</h3>
+                <p>第二次作业是制作书架，主要使用样条线：先将样条线转换为可编辑样条线，再进行圆角或挤出处理，然后按照给定的模型数据搭建。整体难度不大，重点仍在于控制物体之间的对齐关系，避免出现穿模。</p >
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    const enterBtn = document.getElementById("enterBtn");
+    const cover = document.getElementById("cover");
+    const workArea = document.getElementById("workArea");
+    enterBtn.addEventListener("click", () => {
+        cover.style.display = "none";
+        workArea.style.display = "block";
+        window.scrollTo({top:0,behavior:"smooth"});
+    });
+    const tabs = document.querySelectorAll(".tab");
+    const workItems = document.querySelectorAll(".work-item");
+    tabs.forEach(tab=>{
+        tab.onclick = ()=>{
+            tabs.forEach(t=>t.classList.remove("active"));
+             tab.classList.add("active");
+             const target = tab.dataset.tab;
+             workItems.forEach(i=>i.style.display="none");
+             document.getElementById(target).style.display="block";
+         }
+     })
+ </script>
+ </body>
+ </html>
